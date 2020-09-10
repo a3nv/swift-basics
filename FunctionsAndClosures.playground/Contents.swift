@@ -63,3 +63,39 @@ func makeIncrementer() -> ((Int) -> Int) {
 var increment = makeIncrementer()
 print(increment(7))
 
+// take function as an argument
+func hasAnyMatches(list: [Int], condition: (Int) -> Bool) -> Bool {
+    for item in list {
+        if condition(item) {
+            return true
+        }
+    }
+    return false
+}
+
+func lessThanTen(number: Int) -> Bool {
+    return number < 10
+}
+
+var numbers = [20, 19, 7, 12]
+let hasAnyMatchesResult = hasAnyMatches(list: numbers, condition: lessThanTen)
+print(hasAnyMatchesResult)
+
+// anonymous closure. map function is accepting another function which will be applied to each item in collection and then return modified value. So the return type of this closure defined on the line 87 and arguemnts all item inside the collection.
+let mappedNumbers = numbers.map({(number: Int) -> Int in
+    let result = 3 * number
+    return result
+})
+print("Updated numbers: \(mappedNumbers)")
+
+let mappedNumbers2 = numbers.map({(number: Int) -> Int in
+    let result: Int
+    if number % 2 != 0 {
+        result = 0
+    } else {
+        result = 3 * number
+    }
+    return result
+})
+
+print("Updated numbers 2: \(mappedNumbers2)")
