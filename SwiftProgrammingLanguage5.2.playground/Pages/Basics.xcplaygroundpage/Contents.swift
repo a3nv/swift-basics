@@ -1,3 +1,6 @@
+//: [Previous](@previous)
+
+import Foundation
 import UIKit
 
 var str = "Hello, playground"
@@ -63,3 +66,5 @@ for i in 0..<4 {
 }
 print("total: \(total)")
 
+
+//: [Next](@next)
